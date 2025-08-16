@@ -6,6 +6,9 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model {
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
         'phone',
         'address',
