@@ -19,9 +19,7 @@ class UserController extends Controller
         if(!$user){
             return response()->json(['message' => 'User not found'], 404);
         }
-        return response()->json([
-            'data'    => $user
-        ], 200);
+        return response()->json($user, 200);
     }
 
     public function store(StoreUserRequest $request) {
@@ -36,9 +34,7 @@ class UserController extends Controller
             'user_type_id' => $userType->id,
         ]);
 
-        return response()->json([
-            'data'    => $user
-        ], 201);
+        return response()->json($user, 201);
     }
 
     public function update(UpdateUserRequest $request, $id) {
@@ -50,9 +46,7 @@ class UserController extends Controller
 
         $user->update($request->validated());
 
-        return response()->json([
-            'data'    => $user
-        ], 200);
+        return response()->json($user, 200);
     }
 
     public function destroy($id)
