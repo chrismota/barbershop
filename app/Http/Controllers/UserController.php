@@ -4,63 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
-use App\Models\UserType;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+    protected UserService $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index(){
-        return response()->json(User::all(), 200);
+        return response()->json($this->userService->getAllUsers(), 200);
     }
 
     public function show($id){
-        $user = User::find($id);
+        $user = $this->userService->getUser($id);
 
-        if(!$user){
-            return response()->json(['message' => 'User not found'], 404);
-        }
-        return response()->json($user, 200);
+        return response()->json($user->toArray(), 200);
     }
 
     public function store(StoreUserRequest $request) {
-        $data = $request->validated();
+        $user = $this->userService->createUser($request->validated());
 
-        $userType = UserType::where('role', $data['role'])->firstOrFail();
-
-        $user = User::create([
-            'name'         => $data['name'],
-            'email'        => $data['email'],
-            'password'     => $data['password'],
-            'user_type_id' => $userType->id,
-        ]);
-
-        return response()->json($user, 201);
+        return response()->json($user->toArray(), 201);
     }
 
-    public function update(UpdateUserRequest $request, $id) {
-        $user = User::find($id);
+    public function update(UpdateUserRequest $request, $userId) {
+        $user = $this->userService->updateUser($request->validated(), $userId);
 
-        if(!$user){
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
-        $user->update($request->validated());
-
-        return response()->json($user, 200);
+        return response()->json($user->toArray(), 200);
     }
 
     public function destroy($id)
     {
-        $user = User::find($id);
-
-        if(!$user){
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
-        $user->delete();
+        $this->userService->deleteUser($id);
 
         return response()->json([
-            'message' => 'Admin user deleted successfully',
+            'message' => 'Admin deleted successfully',
         ], 204);
     }
 
