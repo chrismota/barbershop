@@ -23,20 +23,15 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function store(Request $request){
-        $validated = $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-            'role' => 'required|string|in:Admin,Client',
-        ]);
+    public function store(StoreUserRequest $request) {
+        $data = $request->validated();
 
-        $userType = UserType::where('role', $validated['role'])->firstOrFail();
+        $userType = UserType::where('role', $data['role'])->firstOrFail();
 
         $user = User::create([
-            'name'         => $validated['name'],
-            'email'        => $validated['email'],
-            'password'     => $validated['password'],
+            'name'         => $data['name'],
+            'email'        => $data['email'],
+            'password'     => $data['password'],
             'user_type_id' => $userType->id,
         ]);
 
@@ -45,21 +40,14 @@ class UserController extends Controller
         ], 201);
     }
 
-    public function update(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'name'     => 'sometimes|string|max:255',
-            'email'    => "sometimes|email|unique:users,email,$id",
-            'password' => 'sometimes|string|min:6',
-        ]);
-
+    public function update(UpdateUserRequest $request, $id) {
         $user = User::find($id);
 
         if(!$user){
             return response()->json(['message' => 'User not found'], 404);
         }
 
-        $user->update($validated);
+        $user->update($request->validated());
 
         return response()->json([
             'data'    => $user
