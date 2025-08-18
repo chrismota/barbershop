@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSchedulingRequest;
+use App\Jobs\SendSchedulingEmail;
 use App\Models\Client;
 use App\Models\Scheduling;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -51,6 +53,10 @@ class SchedulingController extends Controller
             'start_date' => $start,
             'end_date'   => $end,
         ]);
+
+        $admins = User::whereHas('userType', fn($q) => $q->where('role', 'Admin'))->get();
+
+        SendSchedulingEmail::dispatch($scheduling, $client, $admins);
 
         return response()->json($scheduling->toArray(), 201);
     }
