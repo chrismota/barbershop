@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model {
-    use SoftDeletes;
+class User extends Authenticatable {
+    use SoftDeletes, HasApiTokens, Notifiable;
 
     public $incrementing = false;
     protected $keyType = 'string';
