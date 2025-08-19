@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -13,10 +14,11 @@ class UpdateUserRequest extends FormRequest
 
     public function rules(): array
     {
-        $userId  = $this->route('user');
+        $adminId = $this->route('adminId') ?? Auth::id();
+
         return [
             'name'     => 'sometimes|string|min:5|max:255',
-            'email'    => "sometimes|email|unique:users,email,$userId",
+            'email'    => "sometimes|email|unique:users,email,$adminId",
             'password' => 'sometimes|string|min:6',
         ];
     }

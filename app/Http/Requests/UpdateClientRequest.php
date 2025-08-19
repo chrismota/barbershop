@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Client;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateClientRequest extends FormRequest
 {
@@ -14,7 +15,7 @@ class UpdateClientRequest extends FormRequest
 
     public function rules(): array
     {
-        $clientId = $this->route('client');
+        $clientId = $this->route('clientId') ?? Auth::id();
         $userId   = Client::find($clientId)?->user_id;
 
         return [
