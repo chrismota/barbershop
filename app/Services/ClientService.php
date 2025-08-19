@@ -14,7 +14,7 @@ class ClientService
         return Client::all()->toArray();
     }
 
-    public function getClient($clientId): Client
+    public function getClientByAdmin($clientId): Client
     {
         $client = Client::find($clientId);
 
