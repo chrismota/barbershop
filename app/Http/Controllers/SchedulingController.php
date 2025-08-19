@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GetAvailabeSlotRequest;
 use App\Http\Requests\StoreSchedulingRequest;
+use App\Http\Requests\UpdateSchedulingRequest;
 use App\Services\SchedulingService;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class SchedulingController extends Controller
         return response()->json($scheduling->toArray(), 200);
     }
 
-    public function update(StoreSchedulingRequest $request, string $clientId, string $schedulingId)
+    public function update(UpdateSchedulingRequest $request, string $clientId, string $schedulingId)
     {
         $scheduling = $this->schedulingService->updateScheduling($request->validated(), $clientId, $schedulingId);
 
