@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSchedulingRequest;
 use App\Http\Requests\UpdateSchedulingRequest;
 use App\Services\SchedulingService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SchedulingController extends Controller
 {
@@ -37,9 +38,16 @@ class SchedulingController extends Controller
         return response()->json($scheduling->toArray(), 200);
     }
 
-    public function update(UpdateSchedulingRequest $request, string $clientId, string $schedulingId)
+    public function store(StoreSchedulingRequest $request)
     {
-        $scheduling = $this->schedulingService->updateScheduling($request->validated(), $clientId, $schedulingId);
+        $scheduling = $this->schedulingService->createScheduling($request->validated(), Auth::id());
+
+        return response()->json($scheduling->toArray(), 201);
+    }
+
+    public function update(UpdateSchedulingRequest $request, string $schedulingId)
+    {
+        $scheduling = $this->schedulingService->updateScheduling($request->validated(), Auth::id(), $schedulingId);
 
         return response()->json($scheduling->toArray(), 200);
     }
