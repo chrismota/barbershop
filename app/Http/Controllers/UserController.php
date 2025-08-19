@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\AdminUserResource;
 use App\Services\UserService;
+use App\Support\ApiResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -25,52 +28,48 @@ class UserController extends Controller
     {
         $user = $this->userService->getUser($id);
 
-        return response()->json($user->toArray(), 200);
+        return ApiResponse::success(new AdminUserResource($user), 'User retrieved successfully');
     }
 
     public function showLoggedUser()
     {
         $user = $this->userService->getUser(Auth::id());
 
-        return response()->json($user->toArray(), 200);
+        return ApiResponse::success(new AdminUserResource($user), 'User retrieved successfully');
     }
 
     public function store(StoreUserRequest $request)
     {
         $user = $this->userService->createUser($request->validated());
 
-        return response()->json($user->toArray(), 201);
+        return ApiResponse::success(new AdminUserResource($user), 'User created successfully', 201);
     }
 
     public function update(UpdateUserRequest $request, $userId)
     {
         $user = $this->userService->updateUser($request->validated(), $userId);
 
-        return response()->json($user->toArray(), 200);
+        return ApiResponse::success(new AdminUserResource($user), 'User updated successfully');
     }
 
     public function updateLoggedUser(UpdateUserRequest $request)
     {
         $user = $this->userService->updateUser($request->validated(), Auth::id());
 
-        return response()->json($user->toArray(), 200);
+        return ApiResponse::success(new AdminUserResource($user), 'User updated successfully');
     }
 
     public function destroy($id)
     {
         $this->userService->deleteUser($id);
 
-        return response()->json([
-            'message' => 'Admin deleted successfully',
-        ], 204);
+        return response()->json(null, 204);
     }
 
     public function destroyLoggedUser()
     {
         $this->userService->deleteUser(Auth::id());
 
-        return response()->json([
-            'message' => 'Admin deleted successfully',
-        ], 204);
+        return response()->json(null, 204);
     }
 }

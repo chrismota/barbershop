@@ -22,22 +22,20 @@ class AdminClientController extends Controller
     {
         $client = $this->clientService->getClientByAdmin($id);
 
-        return response()->json($client->load('user')->toArray(), 200);
+        return ApiResponse::success(new AdminClientResource($client), 'Client retrieved successfully');
     }
 
     public function update(UpdateClientRequest $request, $clientId)
     {
         $client = $this->clientService->updateClient($request->validated(), $clientId);
 
-        return response()->json($client->load('user')->toArray(), 200);
+        return ApiResponse::success(new AdminClientResource($client), 'Client updated successfully');
     }
 
     public function destroy(string $id)
     {
         $this->clientService->deleteClient($id);
 
-        return response()->json([
-            'message' => 'Client deleted successfully'
-        ], 200);
+        return response()->json(null, 204);
     }
 }

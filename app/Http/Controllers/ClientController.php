@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use App\Http\Resources\ClientResource;
 use App\Services\ClientService;
 use Illuminate\Support\Facades\Auth;
+use App\Support\ApiResponse;
 
 class ClientController extends Controller
 {
@@ -19,29 +21,27 @@ class ClientController extends Controller
     public function show(){
         $client = $this->clientService->getClientByUserId(Auth::id());
 
-        return response()->json($client->load('user')->toArray(), 200);
+        return ApiResponse::success(new ClientResource($client), 'Client retrieved successfully');
     }
 
     public function store(StoreClientRequest $request)
     {
         $client = $this->clientService->createClient($request->validated());
 
-        return response()->json($client->load('user')->toArray(), 201);
+        return  ApiResponse::success(new ClientResource($client), 'Client created successfully', 201);
     }
 
     public function update(UpdateClientRequest $request)
     {
         $client = $this->clientService->updateClientByUserId($request->validated(), Auth::id());
 
-        return response()->json($client->load('user')->toArray(), 200);
+        return ApiResponse::success(new ClientResource($client), 'Client updated successfully');
     }
 
     public function destroy()
     {
         $this->clientService->deleteClientByUserId(Auth::id());
 
-        return response()->json([
-            'message' => 'Client deleted successfully'
-        ], 200);
+        return response()->json(null, 204);
     }
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GetAvailabeSlotRequest;
 use App\Http\Requests\StoreSchedulingRequest;
 use App\Http\Requests\UpdateSchedulingRequest;
+use App\Http\Resources\SchedulingResource;
 use App\Services\SchedulingService;
+use App\Support\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,35 +23,34 @@ class SchedulingController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->query('per_page', 10);
-        return response()->json($this->schedulingService->getAllSchedulingsFromClient($perPage));
+        return ApiResponse::success($this->schedulingService->getAllSchedulingsFromClient($perPage), 'Schedulings retrieved successfully');
     }
 
     public function getAvailableSlots(GetAvailabeSlotRequest $request)
     {
         $slots = $this->schedulingService->getAvailableSlots($request->validated());
 
-        return response()->json($slots);
+        return ApiResponse::success($slots, 'Available slots retrieved successfully');
     }
 
     public function show(string $id)
     {
         $scheduling = $this->schedulingService->getSchedulingFromClient($id);
-
-        return response()->json($scheduling->toArray(), 200);
+        return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling retrieved successfully');
     }
 
     public function store(StoreSchedulingRequest $request)
     {
         $scheduling = $this->schedulingService->createScheduling($request->validated(), Auth::id());
 
-        return response()->json($scheduling->toArray(), 201);
+        return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling created successfully', 201);
     }
 
     public function update(UpdateSchedulingRequest $request, string $schedulingId)
     {
         $scheduling = $this->schedulingService->updateScheduling($request->validated(), Auth::id(), $schedulingId);
 
-        return response()->json($scheduling->toArray(), 200);
+        return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling updated successfully');
     }
 
     public function destroy($schedulingId)
