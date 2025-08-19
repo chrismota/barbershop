@@ -20,14 +20,7 @@ class SchedulingController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->query('per_page', 10);
-        return response()->json($this->schedulingService->getAllSchedulings($perPage));
-    }
-
-    public function store(StoreSchedulingRequest $request, $clientId)
-    {
-        $scheduling = $this->schedulingService->createScheduling($request->validated(), $clientId);
-
-        return response()->json($scheduling->toArray(), 201);
+        return response()->json($this->schedulingService->getAllSchedulingsFromClient($perPage));
     }
 
     public function getAvailableSlots(GetAvailabeSlotRequest $request)
@@ -39,7 +32,7 @@ class SchedulingController extends Controller
 
     public function show(string $id)
     {
-        $scheduling = $this->schedulingService->getScheduling($id);
+        $scheduling = $this->schedulingService->getSchedulingFromClient($id);
 
         return response()->json($scheduling->toArray(), 200);
     }
