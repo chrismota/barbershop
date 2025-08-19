@@ -8,12 +8,24 @@ use App\Models\Client;
 use App\Models\Scheduling;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SchedulingService
 {
-    public function getAllSchedulings($perPage = 10)
+    public function getAllSchedulingsFromClient($perPage = 10)
+    {
+         $client = Client::where('user_id', Auth::id())->first();
+
+         if(!$client){
+            throw new NotFoundHttpException("Usuário não encontrado.");
+         }
+
+         return Scheduling::where('client_id', $client->id)->orderBy('start_date', 'asc')->paginate($perPage);
+    }
+
+    public function getAllSchedulingsWithAdmin($perPage = 10)
     {
          return Scheduling::orderBy('start_date', 'asc')->paginate($perPage);
     }
@@ -29,9 +41,22 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function createScheduling(array $schedulingData, $clientId): Scheduling
+    public function getSchedulingFromClient($schedulingId): Scheduling
     {
-        $client = Client::find($clientId);
+        $client = Client::where('user_id', Auth::id())->first();
+
+        $scheduling = Scheduling::where('client_id', $client->id)->find($schedulingId);
+
+        if(!$scheduling){
+            throw new NotFoundHttpException("Scheduling not found.");
+        }
+
+        return $scheduling;
+    }
+
+    public function createScheduling(array $schedulingData, $userId)
+    {
+        $client = Client::where('user_id', $userId)->first();
 
         if(!$client){
             throw new NotFoundHttpException("Usuário não encontrado.");
@@ -40,7 +65,7 @@ class SchedulingService
         $this->validateSchedule($schedulingData);
 
         $scheduling = Scheduling::create([
-            'client_id'  => $clientId,
+            'client_id'  => $client->id,
             'start_date' => $schedulingData['start_date'],
             'end_date'   => $schedulingData['end_date'],
         ]);
@@ -50,15 +75,36 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function updateScheduling(array $schedulingData, $clientId, $schedulingId)
+    public function createSchedulingWithAdmin(array $schedulingData, $clientId)
     {
-        $scheduling = Scheduling::where('client_id', $clientId)->find($schedulingId);
+        $client = Client::find($clientId);
+
+        if(!$client){
+            throw new NotFoundHttpException("Cliente não encontrado.");
+        }
+
+        $this->validateSchedule($schedulingData);
+
+        $scheduling = Scheduling::create([
+            'client_id'  => $client->id,
+            'start_date' => $schedulingData['start_date'],
+            'end_date'   => $schedulingData['end_date'],
+        ]);
+
+        $this->sendSchedulingEmail($scheduling, $client);
+
+        return $scheduling;
+    }
+
+    public function updateScheduling(array $schedulingData, $userId, $schedulingId)
+    {
+        $client = Client::with('user')->where('user_id', $userId)->first();
+
+        $scheduling = Scheduling::where('client_id', $client->id)->find($schedulingId);
 
         if(!$scheduling){
             throw new NotFoundHttpException("Agendamento não encontrado.");
         }
-
-        $client = Client::with('user')->find($clientId);
 
         $oldScheduling = $scheduling->only(['start_date', 'end_date']);
 
@@ -71,9 +117,43 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function deleteScheduling($clientId, $schedulingId)
+    public function updateSchedulingWithAdmin(array $schedulingData, $schedulingId)
     {
-        $scheduling = Scheduling::where('client_id', $clientId)->where('id', $schedulingId)->first();
+        $scheduling = Scheduling::with('client.user')->find($schedulingId);
+
+        if (!$scheduling) {
+            throw new NotFoundHttpException("Agendamento não encontrado.");
+        }
+
+        $client = $scheduling->client;
+
+        $oldScheduling = $scheduling->only(['start_date', 'end_date']);
+
+        $this->validateSchedule($schedulingData, $schedulingId);
+
+        $scheduling->update($schedulingData);
+
+        $this->sendSchedulingUpdatedEmail($oldScheduling, $scheduling->only(['start_date', 'end_date']), $client);
+
+        return $scheduling;
+    }
+
+    public function deleteScheduling($userId, $schedulingId)
+    {
+        $client = Client::with('user')->where('user_id', $userId)->first();
+
+        $scheduling = Scheduling::where('client_id', $client->id)->where('id', $schedulingId)->first();
+
+        if(!$scheduling){
+           throw new NotFoundHttpException("Scheduling not found for this client");
+        }
+
+        $scheduling->delete();
+    }
+
+    public function deleteSchedulingWithAdmin($schedulingId)
+    {
+        $scheduling = Scheduling::find($schedulingId);
 
         if(!$scheduling){
            throw new NotFoundHttpException("Scheduling not found for this client");
