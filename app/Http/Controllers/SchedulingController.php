@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AvailabeScheduleRequest;
+use App\Http\Requests\GetAvailabeSlotRequest;
 use App\Http\Requests\StoreSchedulingRequest;
 use App\Services\SchedulingService;
 use Illuminate\Http\Request;
@@ -29,7 +29,7 @@ class SchedulingController extends Controller
         return response()->json($scheduling->toArray(), 201);
     }
 
-    public function getAvailableSlots(AvailabeScheduleRequest $request)
+    public function getAvailableSlots(GetAvailabeSlotRequest $request)
     {
         $slots = $this->schedulingService->getAvailableSlots($request->validated());
 
