@@ -44,7 +44,14 @@ class SchedulingController extends Controller
         return response()->json($scheduling->toArray(), 200);
     }
 
-    public function destroy($clientId, $schedulingId)
+    public function destroy($schedulingId)
+    {
+        $this->schedulingService->deleteScheduling(Auth::id(), $schedulingId);
+
+        return response()->json(null, 204);
+    }
+
+    public function destroyWithAdmin($clientId, $schedulingId)
     {
         $this->schedulingService->deleteScheduling($clientId, $schedulingId);
 
