@@ -5,13 +5,15 @@ namespace App\Services;
 use App\Models\Client;
 use App\Models\User;
 use App\Models\UserType;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ClientService
 {
-    public function getAllClients(): array
+    public function getAllClients($perPage = 10): LengthAwarePaginator
     {
-        return Client::all()->toArray();
+        return Client::paginate($perPage);
     }
 
     public function getClientByAdmin($clientId): Client
@@ -41,7 +43,7 @@ class ClientService
         $userType = UserType::where('role', $data['role'])->first();
 
         if (!$userType) {
-            throw new NotFoundHttpException("User type '{$data['role']}' não encontrado.");
+            throw new NotFoundHttpException("User type '{$data['role']}' not found.");
         }
 
         $user = User::create([
@@ -65,7 +67,7 @@ class ClientService
         $client = Client::find($clientId);
 
         if (!$client) {
-            throw new NotFoundHttpException("Cliente não encontrado.");
+            throw new NotFoundHttpException("Client not found.");
         }
 
         $userData = collect($clientData)->only(['name','email','password'])->toArray();
@@ -97,7 +99,7 @@ class ClientService
         $client = Client::find($clientId);
 
         if (!$client) {
-            throw new NotFoundHttpException("Cliente não encontrado.");
+            throw new NotFoundHttpException("Client not found.");
         }
 
         $client->user()->delete();

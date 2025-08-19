@@ -4,13 +4,14 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\UserType;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserService
 {
-    public function getAllUsers(): array
+    public function getAllUsers($perPage = 10): LengthAwarePaginator
     {
-        return User::all()->toArray();
+        return User::paginate($perPage);
     }
 
     public function getUser($userId): User

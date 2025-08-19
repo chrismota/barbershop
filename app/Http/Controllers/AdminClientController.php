@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateClientRequest;
+use App\Http\Resources\AdminClientResource;
 use App\Services\ClientService;
+use App\Support\ApiResponse;
+use Illuminate\Http\Request;
 
 class AdminClientController extends Controller
 {
@@ -14,8 +17,10 @@ class AdminClientController extends Controller
         $this->clientService = $clientService;
     }
 
-    public function index(){
-        return response()->json($this->clientService->getAllClients(), 200);
+    public function index(Request $request)
+    {
+        $perPage = $request->query('per_page', 10);
+        return ApiResponse::success($this->clientService->getAllClients($perPage), 'Clients retrieved successfully');
     }
 
     public function show(string $id)

@@ -8,13 +8,14 @@ use App\Models\Client;
 use App\Models\Scheduling;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SchedulingService
 {
-    public function getAllSchedulingsFromClient($perPage = 10)
+    public function getAllSchedulingsFromClient($perPage = 10): LengthAwarePaginator
     {
          $client = Client::where('user_id', Auth::id())->first();
 
@@ -25,7 +26,7 @@ class SchedulingService
          return Scheduling::where('client_id', $client->id)->orderBy('start_date', 'asc')->paginate($perPage);
     }
 
-    public function getAllSchedulingsWithAdmin($perPage = 10)
+    public function getAllSchedulingsWithAdmin($perPage = 10): LengthAwarePaginator
     {
          return Scheduling::orderBy('start_date', 'asc')->paginate($perPage);
     }

@@ -19,9 +19,10 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->userService->getAllUsers(), 200);
+        $perPage = $request->query('per_page', 10);
+        return ApiResponse::success($this->userService->getAllUsers($perPage), 'Users retrieved successfully');
     }
 
     public function show($id)
