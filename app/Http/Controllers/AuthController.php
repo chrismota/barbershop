@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Support\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,16 +29,15 @@ class AuthController extends Controller
 
         $token = $user->createToken('token', $abilities, now()->addHour())->plainTextToken;
 
-        return response()->json([
-            'user' => $user,
-            'token' => $token
-        ]);
+        return ApiResponse::success([
+            'token' => $token,
+        ], 'User logged in successfully');
     }
 
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
 
-        return response()->json(['message' => 'Logged out'], 200);
+        return ApiResponse::success(null, 'User logged out successfully', 200);
     }
 }
