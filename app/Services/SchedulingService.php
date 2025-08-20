@@ -62,7 +62,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function createScheduling(array $schedulingData, $userId)
+    public function createSchedulingFromClient(array $schedulingData, $userId): Scheduling
     {
         $client = Client::where('user_id', $userId)->first();
 
@@ -83,7 +83,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function createSchedulingWithAdmin(array $schedulingData, $clientId)
+    public function createSchedulingWithAdmin(array $schedulingData, $clientId): Scheduling
     {
         $client = Client::find($clientId);
 
@@ -125,7 +125,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function updateSchedulingWithAdmin(array $schedulingData, $schedulingId)
+    public function updateSchedulingWithAdmin(array $schedulingData, $schedulingId): Scheduling
     {
         $scheduling = Scheduling::with('client.user')->find($schedulingId);
 
@@ -146,7 +146,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function deleteScheduling($userId, $schedulingId)
+    public function deleteSchedulingFromClient($userId, $schedulingId): void
     {
         $client = Client::with('user')->where('user_id', $userId)->first();
 
@@ -159,7 +159,7 @@ class SchedulingService
         $scheduling->delete();
     }
 
-    public function deleteSchedulingWithAdmin($schedulingId)
+    public function deleteSchedulingWithAdmin($schedulingId): void
     {
         $scheduling = Scheduling::find($schedulingId);
 
@@ -204,7 +204,8 @@ class SchedulingService
         return $slots;
     }
 
-    private function validateSchedule(array $schedulingData, $schedulingId = null){
+    private function validateSchedule(array $schedulingData, $schedulingId = null): void
+    {
         $start = Carbon::parse($schedulingData['start_date']);
         $end = Carbon::parse($schedulingData['end_date']);
 
@@ -232,7 +233,7 @@ class SchedulingService
         }
     }
 
-    private function sendSchedulingEmail(Scheduling $scheduling, Client $client)
+    private function sendSchedulingEmail(Scheduling $scheduling, Client $client): void
     {
         $admins = User::whereHas('userType', fn($q) => $q->where('role', 'Admin'))->get();
         SendSchedulingEmail::dispatch($scheduling, $client, $admins);
