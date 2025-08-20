@@ -14,8 +14,7 @@ class GetAvailabeSlotRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => 'required|date',
-            'duration' => 'nullable|integer|min:15|max:60',
+            'date' => 'required|date'
         ];
     }
 }
