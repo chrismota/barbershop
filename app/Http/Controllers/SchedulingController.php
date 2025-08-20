@@ -41,28 +41,21 @@ class SchedulingController extends Controller
 
     public function store(StoreSchedulingRequest $request)
     {
-        $scheduling = $this->schedulingService->createScheduling($request->validated(), Auth::id());
+        $scheduling = $this->schedulingService->createSchedulingFromClient($request->validated(), Auth::id());
 
         return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling created successfully', 201);
     }
 
     public function update(UpdateSchedulingRequest $request, string $schedulingId)
     {
-        $scheduling = $this->schedulingService->updateScheduling($request->validated(), Auth::id(), $schedulingId);
+        $scheduling = $this->schedulingService->updateSchedulingFromClient($request->validated(), Auth::id(), $schedulingId);
 
         return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling updated successfully');
     }
 
     public function destroy($schedulingId)
     {
-        $this->schedulingService->deleteScheduling(Auth::id(), $schedulingId);
-
-        return response()->json(null, 204);
-    }
-
-    public function destroyWithAdmin($clientId, $schedulingId)
-    {
-        $this->schedulingService->deleteScheduling($clientId, $schedulingId);
+        $this->schedulingService->deleteSchedulingFromClient(Auth::id(), $schedulingId);
 
         return response()->json(null, 204);
     }
