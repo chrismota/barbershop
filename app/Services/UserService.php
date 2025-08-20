@@ -27,10 +27,10 @@ class UserService
 
     public function createUser(array $userData): User
     {
-        $userType = UserType::where('role', $userData['role'])->first();
+        $userType = UserType::where('role', 'admin')->first();
 
         if (!$userType) {
-            throw new NotFoundHttpException("User type '{$userData['role']}' não encontrado.");
+            throw new NotFoundHttpException("User type admin not found.");
         }
 
         return User::create([

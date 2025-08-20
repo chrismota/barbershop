@@ -17,7 +17,6 @@ class StoreClientRequest extends FormRequest
             'name'     => 'required|string|min:5|max:255',
             'email'    => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'role' => 'required|string|in:Admin,Client',
             'phone' => 'required|string|min:9|max:11',
             'address' => 'required|string|min:5|max:255',
             'city' => 'required|string|min:3|max:255'

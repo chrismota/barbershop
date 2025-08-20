@@ -40,10 +40,10 @@ class ClientService
 
     public function createClient(array $data): Client
     {
-        $userType = UserType::where('role', $data['role'])->first();
+        $userType = UserType::where('role', 'client')->first();
 
         if (!$userType) {
-            throw new NotFoundHttpException("User type '{$data['role']}' not found.");
+            throw new NotFoundHttpException("User type client not found.");
         }
 
         $user = User::create([
