@@ -99,7 +99,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function updateScheduling(array $schedulingData, $userId, $schedulingId)
+    public function updateSchedulingFromClient(array $schedulingData, $userId, $schedulingId): Scheduling
     {
         $client = Client::with('user')->where('user_id', $userId)->first();
 
@@ -109,15 +109,8 @@ class SchedulingService
             throw new NotFoundHttpException("Scheduling not found.");
         }
 
-        $oldScheduling = $scheduling->only(['start_date', 'end_date']);
+        return $this->updateScheduling($schedulingData, $schedulingId, $scheduling, $client);
 
-        $this->validateSchedule($schedulingData, $schedulingId);
-
-        $scheduling->update($schedulingData);
-
-        $this->sendSchedulingUpdatedEmail($oldScheduling, $scheduling->only(['start_date', 'end_date']), $client);
-
-        return $scheduling;
     }
 
     public function updateSchedulingWithAdmin(array $schedulingData, $schedulingId): Scheduling
@@ -130,6 +123,11 @@ class SchedulingService
 
         $client = $scheduling->client;
 
+        return $this->updateScheduling($schedulingData, $schedulingId, $scheduling, $client);
+    }
+
+    private function updateScheduling(array $schedulingData, $schedulingId, $scheduling, $client): Scheduling
+    {
         $oldScheduling = $scheduling->only(['start_date', 'end_date']);
 
         $this->validateSchedule($schedulingData, $schedulingId);
