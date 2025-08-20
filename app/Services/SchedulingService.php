@@ -17,11 +17,7 @@ class SchedulingService
 {
     public function getAllSchedulingsFromClient($perPage = 10): LengthAwarePaginator
     {
-         $client = Client::where('user_id', Auth::id())->first();
-
-         if(!$client){
-            throw new NotFoundHttpException("Client not found");
-         }
+        $client = $this->getClientByUserId(Auth::id());
 
          return Scheduling::where('client_id', $client->id)->orderBy('start_date', 'asc')->paginate($perPage);
     }
@@ -29,6 +25,17 @@ class SchedulingService
     public function getAllSchedulingsWithAdmin($perPage = 10): LengthAwarePaginator
     {
          return Scheduling::orderBy('start_date', 'asc')->paginate($perPage);
+    }
+
+    private function getClientByUserId($userId): Client
+    {
+        $client = Client::where('user_id', $userId)->first();
+
+        if(!$client){
+            throw new NotFoundHttpException("Client not found.");
+        }
+
+        return $client;
     }
 
     public function getScheduling($schedulingId): Scheduling
@@ -44,7 +51,7 @@ class SchedulingService
 
     public function getSchedulingFromClient($schedulingId): Scheduling
     {
-        $client = Client::where('user_id', Auth::id())->first();
+        $client = $this->getClientByUserId(Auth::id());
 
         $scheduling = Scheduling::where('client_id', $client->id)->find($schedulingId);
 
