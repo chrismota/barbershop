@@ -22,4 +22,11 @@ class UpdateUserRequest extends FormRequest
             'password' => 'sometimes|string|min:6',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'email.unique' => 'The provided information is invalid.',
+        ];
+    }
 }

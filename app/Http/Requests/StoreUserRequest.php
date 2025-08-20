@@ -18,4 +18,11 @@ class StoreUserRequest extends FormRequest {
             'password' => 'required|string|min:6',
         ];
     }
+
+        public function messages(): array
+    {
+        return [
+            'email.unique' => 'The provided information is invalid.',
+        ];
+    }
 }

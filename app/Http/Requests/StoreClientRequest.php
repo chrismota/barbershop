@@ -22,4 +22,11 @@ class StoreClientRequest extends FormRequest
             'city' => 'required|string|min:3|max:255'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'email.unique' => 'The provided information is invalid.',
+        ];
+    }
 }
