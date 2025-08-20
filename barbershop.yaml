@@ -30,12 +30,12 @@ collection:
               sortKey: -1755626588014
               description: ""
             children:
-              - url: http://barbershop.test/api/admins
+              - url: http://127.0.0.1:8000/api/admins
                 name: Get All Admins
                 meta:
                   id: req_7bfbfd1d2f1340bbb345ae8285fc3051
                   created: 1755309445768
-                  modified: 1755626719754
+                  modified: 1755729886670
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607558
@@ -66,12 +66,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admins/1b8feff7-8aef-46c9-859a-ec4abbe5ae03
+              - url: http://127.0.0.1:8000/api/admins/1b8feff7-8aef-46c9-859a-ec4abbe5ae03
                 name: Update Admin
                 meta:
                   id: req_0d3e572bca9a40e4a5e8086cb37f7783
                   created: 1755309456726
-                  modified: 1755723220203
+                  modified: 1755729917694
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607058
@@ -107,12 +107,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admins/083be725-0b3a-420b-93e0-e3e11dd31a61
+              - url: http://127.0.0.1:8000/api/admins/083be725-0b3a-420b-93e0-e3e11dd31a61
                 name: Delete Admin
                 meta:
                   id: req_256360b8c7104458acfc7571ecf0ac59
                   created: 1755309460846
-                  modified: 1755717708336
+                  modified: 1755729923936
                   isPrivate: false
                   description: ""
                   sortKey: -1755626606758
@@ -137,12 +137,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admins
+              - url: http://127.0.0.1:8000/api/admins
                 name: Create Admin
                 meta:
                   id: req_4e46d07f809c4820a347538485dd78d1
                   created: 1755355291167
-                  modified: 1755723115285
+                  modified: 1755729912782
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607158
@@ -178,12 +178,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admin/1b8feff7-8aef-46c9-859a-ec4abbe5ae03
+              - url: http://127.0.0.1:8000/api/admin/1b8feff7-8aef-46c9-859a-ec4abbe5ae03
                 name: Get Admin
                 meta:
                   id: req_b9a69a0ff994401fb1a60444ce758514
                   created: 1755376493847
-                  modified: 1755717639338
+                  modified: 1755729907629
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607258
@@ -213,12 +213,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admin
+              - url: http://127.0.0.1:8000/api/admin
                 name: Get Logged Admin
                 meta:
                   id: req_de78acaee4284552b6f0ec763d8e0e17
                   created: 1755613133899
-                  modified: 1755626633545
+                  modified: 1755729891571
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607458
@@ -249,12 +249,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admins
+              - url: http://127.0.0.1:8000/api/admins
                 name: Update Logged Admin
                 meta:
                   id: req_19e0395ce9d3480a88416f8a999ccba5
                   created: 1755613602325
-                  modified: 1755723035243
+                  modified: 1755729896484
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607358
@@ -290,12 +290,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admins
+              - url: http://127.0.0.1:8000/api/admins
                 name: Delete Logged Admin
                 meta:
                   id: req_e39ba89030ff4726839b6e6526d35c53
                   created: 1755614621063
-                  modified: 1755703968561
+                  modified: 1755729902573
                   isPrivate: false
                   description: ""
                   sortKey: -1755626607308
@@ -328,12 +328,12 @@ collection:
               sortKey: -1755626748668
               description: ""
             children:
-              - url: http://barbershop.test/api/clients/17ddf185-194f-4d4e-bc9a-1c3d2e5d5664
+              - url: http://127.0.0.1:8000/api/clients/17ddf185-194f-4d4e-bc9a-1c3d2e5d5664
                 name: Update Client
                 meta:
                   id: req_56d447974dc9442f8b7bdea3f251667a
                   created: 1755300900944
-                  modified: 1755723702827
+                  modified: 1755729872731
                   isPrivate: false
                   description: ""
                   sortKey: -1755629869878
@@ -372,12 +372,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/clients/172a7102-2d90-4ff9-b694-04b51ff98af7
+              - url: http://127.0.0.1:8000/api/clients/172a7102-2d90-4ff9-b694-04b51ff98af7
                 name: Delete Client
                 meta:
                   id: req_3345086be21e475eb78e711e6433ddb5
                   created: 1755300932188
-                  modified: 1755717562685
+                  modified: 1755729881948
                   isPrivate: false
                   description: ""
                   sortKey: -1755629869778
@@ -402,12 +402,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/clients
+              - url: http://127.0.0.1:8000/api/clients
                 name: Get All Clients
                 meta:
                   id: req_40feb7ea85cc493cba1dbcf6b87b195f
                   created: 1755300953971
-                  modified: 1755645099674
+                  modified: 1755729861648
                   isPrivate: false
                   description: ""
                   sortKey: -1755629870078
@@ -432,12 +432,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/client/17ddf185-194f-4d4e-bc9a-1c3d2e5d5664
+              - url: http://127.0.0.1:8000/api/client/17ddf185-194f-4d4e-bc9a-1c3d2e5d5664
                 name: Get Client
                 meta:
                   id: req_ccd8aa34d6204b3d90040dba521ddad7
                   created: 1755379740656
-                  modified: 1755723566893
+                  modified: 1755729866017
                   isPrivate: false
                   description: ""
                   sortKey: -1755629869978
@@ -470,12 +470,12 @@ collection:
               sortKey: -1755626748768
               description: ""
             children:
-              - url: http://barbershop.test/api/admin-only/schedulings
+              - url: http://127.0.0.1:8000/api/admin-only/schedulings
                 name: Get Full Schedule
                 meta:
                   id: req_fc145b86c10546d0b6c5545d3ec68324
                   created: 1755300565380
-                  modified: 1755709615445
+                  modified: 1755729836422
                   isPrivate: false
                   description: ""
                   sortKey: -1755629928077
@@ -501,12 +501,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admin-only/schedulings/59888d7c-c26b-4648-a5a0-e97657974560
+              - url: http://127.0.0.1:8000/api/admin-only/schedulings/59888d7c-c26b-4648-a5a0-e97657974560
                 name: Get Schedule
                 meta:
                   id: req_1766eeea4cda447ca5580b222e79e7a9
                   created: 1755628990676
-                  modified: 1755717145396
+                  modified: 1755729843744
                   isPrivate: false
                   description: ""
                   sortKey: -1755629927977
@@ -532,12 +532,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admin-only/schedulings/172a7102-2d90-4ff9-b694-04b51ff98af7
+              - url: http://127.0.0.1:8000/api/admin-only/schedulings/172a7102-2d90-4ff9-b694-04b51ff98af7
                 name: Create Schedule
                 meta:
                   id: req_b80bac0d09b04c88a3981bd7844694d6
                   created: 1755629007817
-                  modified: 1755723352748
+                  modified: 1755729848200
                   isPrivate: false
                   description: ""
                   sortKey: -1755629927877
@@ -572,12 +572,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admin-only/schedulings/b8a00a82-1b5d-45f9-aed5-d4a8ee476ce8
+              - url: http://127.0.0.1:8000/api/admin-only/schedulings/b8a00a82-1b5d-45f9-aed5-d4a8ee476ce8
                 name: Update Schedule
                 meta:
                   id: req_1ad31e5bf7304cdd8ed7a94e77399023
                   created: 1755629028536
-                  modified: 1755722887681
+                  modified: 1755729852957
                   isPrivate: false
                   description: ""
                   sortKey: -1755629927777
@@ -612,12 +612,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/admin-only/schedulings/b8a00a82-1b5d-45f9-aed5-d4a8ee476ce8
+              - url: http://127.0.0.1:8000/api/admin-only/schedulings/b8a00a82-1b5d-45f9-aed5-d4a8ee476ce8
                 name: Delete Schedule
                 meta:
                   id: req_2e4462d12eba4eb1b06f9ec8ef571d17
                   created: 1755629035912
-                  modified: 1755717281150
+                  modified: 1755729857086
                   isPrivate: false
                   description: ""
                   sortKey: -1755629927677
@@ -659,12 +659,12 @@ collection:
               sortKey: -1755626245097
               description: ""
             children:
-              - url: http://barbershop.test/api/schedulings
+              - url: http://127.0.0.1:8000/api/schedulings
                 name: Create Schedule
                 meta:
                   id: req_7003897ad15c4eca85b709924c1b9b97
                   created: 1755300525779
-                  modified: 1755722615531
+                  modified: 1755729796369
                   isPrivate: false
                   description: ""
                   sortKey: -1755626261122
@@ -700,12 +700,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/schedulings/49c529be-dd29-424f-98c4-94b8a2338891
+              - url: http://127.0.0.1:8000/api/schedulings/49c529be-dd29-424f-98c4-94b8a2338891
                 name: Delete Schedule
                 meta:
                   id: req_3a0e18f7f7f04a8099835a876413ab49
                   created: 1755393540190
-                  modified: 1755717058651
+                  modified: 1755729805840
                   isPrivate: false
                   description: ""
                   sortKey: -1755626261047
@@ -730,12 +730,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/schedulings/59888d7c-c26b-4648-a5a0-e97657974560
+              - url: http://127.0.0.1:8000/api/schedulings/59888d7c-c26b-4648-a5a0-e97657974560
                 name: Update Schedule
                 meta:
                   id: req_9fecf7b3dc554ebd9ee941adc23a88fb
                   created: 1755538025000
-                  modified: 1755722672486
+                  modified: 1755729801071
                   isPrivate: false
                   description: ""
                   sortKey: -1755626261097
@@ -770,12 +770,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/schedulings/ecfa195b-e32c-4eb1-8f69-f8eb16089e98
+              - url: http://127.0.0.1:8000/api/schedulings/ecfa195b-e32c-4eb1-8f69-f8eb16089e98
                 name: Get Schedule From Client
                 meta:
                   id: req_295b2cdf10da400b9415f4c5043e11a8
                   created: 1755557912231
-                  modified: 1755708351032
+                  modified: 1755729790582
                   isPrivate: false
                   description: ""
                   sortKey: -1755626261140.75
@@ -800,12 +800,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/schedulings
+              - url: http://127.0.0.1:8000/api/schedulings
                 name: Get All Schedules From Client
                 meta:
                   id: req_5b2b82e6041746d8b80dde476344d87a
                   created: 1755623568595
-                  modified: 1755700066304
+                  modified: 1755729779581
                   isPrivate: false
                   description: ""
                   sortKey: -1755626261147
@@ -839,12 +839,12 @@ collection:
               sortKey: -1755626370733
               description: ""
             children:
-              - url: http://barbershop.test/api/client
+              - url: http://127.0.0.1:8000/api/client
                 name: Get Client
                 meta:
                   id: req_f1baccfe0cf44a82be23adad293112ea
                   created: 1755615541900
-                  modified: 1755714536463
+                  modified: 1755729757314
                   isPrivate: false
                   description: ""
                   sortKey: -1755626383575
@@ -870,12 +870,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/clients
+              - url: http://127.0.0.1:8000/api/clients
                 name: Update Client
                 meta:
                   id: req_8b5655f690a346e291f3ea7589578973
                   created: 1755615549638
-                  modified: 1755722537035
+                  modified: 1755729765959
                   isPrivate: false
                   description: ""
                   sortKey: -1755626383525
@@ -914,12 +914,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-              - url: http://barbershop.test/api/clients
+              - url: http://127.0.0.1:8000/api/clients
                 name: Delete Client
                 meta:
                   id: req_15b69701b10744918fdd8b1fa0f3a9b0
                   created: 1755615554241
-                  modified: 1755699636730
+                  modified: 1755729771746
                   isPrivate: false
                   description: ""
                   sortKey: -1755626383475
@@ -944,12 +944,12 @@ collection:
                     send: true
                     store: true
                   rebuildPath: true
-      - url: http://barbershop.test/api/scheduling/available-slots?date=2025-08-24
+      - url: http://127.0.0.1:8000/api/scheduling/available-slots?date=2025-08-24
         name: Get Available Schedule
         meta:
           id: req_37eeb02030ae4d018eb738ca09f80a12
           created: 1755485561286
-          modified: 1755664827651
+          modified: 1755729654417
           isPrivate: false
           description: ""
           sortKey: -1755629726951
@@ -974,12 +974,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://barbershop.test/api/logout
+      - url: http://127.0.0.1:8000/api/logout
         name: Logout
         meta:
           id: req_6446499592e74941b51a35bcb87294ee
           created: 1755571505782
-          modified: 1755641418531
+          modified: 1755729725410
           isPrivate: false
           description: ""
           sortKey: -1755629726851
@@ -1012,12 +1012,12 @@ collection:
       sortKey: -1755715224697
       description: ""
     children:
-      - url: http://barbershop.test/api/clients
+      - url: http://127.0.0.1:8000/api/clients
         name: Create Client
         meta:
           id: req_e59d195d564042489283187f8e96b153
           created: 1755300851886
-          modified: 1755722056821
+          modified: 1755729645188
           isPrivate: false
           description: ""
           sortKey: -1755715236596
@@ -1053,12 +1053,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://barbershop.test/api/login
+      - url: http://127.0.0.1:8000/api/login
         name: Login
         meta:
           id: req_b87db6b47fcb4fa3be2cae5f5bdff51e
           created: 1755570087833
-          modified: 1755722696735
+          modified: 1755730439074
           isPrivate: false
           description: ""
           sortKey: -1755715236496
@@ -1067,8 +1067,8 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"email": "admin@example.com",
-            	"password": "123456"
+            	"email": "christian@example.com",
+            	"password": "christian"
             }
         headers:
           - name: Content-Type
@@ -1100,7 +1100,7 @@ cookieJar:
     - key: XSRF-TOKEN
       value: eyJpdiI6IkhWdWtneHBoWWJSbXZEdHdlSnhDbEE9PSIsInZhbHVlIjoiVS9GR1U1WGZiS0JuS2FQVlJKSzRVV1RtM0JNKzAwbHd5c3lTc2NoYVJKT2ZROC9IQ1FWakcwcW5UTVpTK0FKMzBQTVhJYkJJSGExeUdISE9Jb0NmdUJWNnZaejUyc21nd0FxRUlJTVdjQVc5djZQR0dqU050R2laMlFWME9VUkYiLCJtYWMiOiI5NTc5OTgzZThiOGQ1NWI5ZDRmMjUzNGYxMmQ0YzRkOTdlZTI1ZDA0YTQ5YmIzYmI5ZjYzMTc1MmVjMjcyYWNiIiwidGFnIjoiIn0%3D
       maxAge: 7200
-      domain: barbershop.test
+      domain: 127.0.0.1
       path: /
       hostOnly: true
       creation: 2025-08-16T14:18:04.555Z
@@ -1110,7 +1110,7 @@ cookieJar:
     - key: laravel-session
       value: eyJpdiI6IlZZOWdNNzFZWERFbmFLTWRvQUk4a3c9PSIsInZhbHVlIjoiVGV6VjNoSnZqMmlJUG9vT1RmZjc5MWxSRGZOTVZlanhnenU3OVJBOEx6SHgvSERaRmRBSHhUZERReUcyLzk5OU8zUHg1UUlVREJKZm45SFBROHhzelVxWFFjVkRxdVE1MDdmRUJYK0VuMUI5bkdPMkVSbUlUb21rWjE0RVBPb2EiLCJtYWMiOiIyMmE2YzYwMzQwMzZhMTA3OTFlOWFmYmI4NGY0MmQ1Y2Y3ZWY4YTUzYzBhNGI3OTNlYTg0YTRlNTAyYzcwZGU3IiwidGFnIjoiIn0%3D
       maxAge: 7200
-      domain: barbershop.test
+      domain: 127.0.0.1
       path: /
       httpOnly: true
       hostOnly: true
@@ -1123,7 +1123,7 @@ environments:
   meta:
     id: env_817348055fb367f73430f4c9b97a7de2d54fdfa0
     created: 1755300419009
-    modified: 1755722705742
+    modified: 1755730448433
     isPrivate: false
   data:
-    token: 3|4tmahEpZEBvghAQsJe3gVAIWSC415UKhHhrLXbRsba76ef33
+    token: 1|XeJgg00WzdSiUVTU8gK7rcWN824kGNyA66SE8bGtdb6ad774
