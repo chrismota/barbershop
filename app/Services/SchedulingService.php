@@ -70,17 +70,7 @@ class SchedulingService
             throw new NotFoundHttpException("Client not found.");
         }
 
-        $this->validateSchedule($schedulingData);
-
-        $scheduling = Scheduling::create([
-            'client_id'  => $client->id,
-            'start_date' => $schedulingData['start_date'],
-            'end_date'   => $schedulingData['end_date'],
-        ]);
-
-        $this->sendSchedulingEmail($scheduling, $client);
-
-        return $scheduling;
+        return $this->createScheduling($schedulingData, $client);
     }
 
     public function createSchedulingWithAdmin(array $schedulingData, $clientId): Scheduling
@@ -91,6 +81,11 @@ class SchedulingService
             throw new NotFoundHttpException("Client not found.");
         }
 
+        return $this->createScheduling($schedulingData, $client);
+    }
+
+    private function createScheduling(array $schedulingData, $client): Scheduling
+    {
         $this->validateSchedule($schedulingData);
 
         $scheduling = Scheduling::create([
