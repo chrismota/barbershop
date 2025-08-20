@@ -166,35 +166,39 @@ class SchedulingService
     public function getAvailableSlots(array $data): array
     {
         $date = Carbon::parse($data['date']);
-        $duration = (int) ($data['duration'] ?? 30);
+        $duration = 30;
 
-        $startDay = $date->copy()->setTime(9, 0);
-        $endDay   = $date->copy()->setTime(18, 0);
+        $workStart = $date->copy()->setTime(9, 0);
+        $workEnd   = $date->copy()->setTime(18, 0);
 
         $bookings = Scheduling::whereDate('start_date', $date)->get();
 
-        $slots = [];
-        $current = $startDay->clone();
+        $availableSlots = [];
+        $currentTime = $workStart->copy();
 
-        while ($current->clone()->addMinutes($duration) <= $endDay) {
-            $slotStart = $current->clone();
-            $slotEnd   = $slotStart->clone()->addMinutes($duration);
+        while ($currentTime->copy()->addMinutes($duration) <= $workEnd) {
+            $slotStart = $currentTime->copy();
+            $slotEnd   = $slotStart->copy()->addMinutes($duration);
 
-            $conflict = $bookings->contains(
-                fn($s) => $s->start_date < $slotEnd && $s->end_date > $slotStart
-            );
+            $conflict = false;
+            foreach ($bookings as $booking) {
+                if ($booking->start_date < $slotEnd && $booking->end_date > $slotStart) {
+                    $conflict = true;
+                    break;
+                }
+            }
 
             if (!$conflict) {
-                $slots[] = [
+                $availableSlots[] = [
                     'start' => $slotStart->toDateTimeString(),
                     'end'   => $slotEnd->toDateTimeString(),
                 ];
             }
 
-            $current->addMinutes(15);
+            $currentTime->addMinutes(15);
         }
 
-        return $slots;
+        return $availableSlots;
     }
 
     private function validateSchedule(array $schedulingData, $schedulingId = null): void
