@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SchedulingService
 {
-    public function getAllSchedulingsFromClient($perPage = 10): LengthAwarePaginator
+    public function getAllSchedulingsFromLoggedClient($perPage = 10): LengthAwarePaginator
     {
         $client = $this->getClientByUserId(Auth::id());
 
@@ -49,7 +49,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function getSchedulingFromClient($schedulingId): Scheduling
+    public function getSchedulingFromLoggedClient($schedulingId): Scheduling
     {
         $client = $this->getClientByUserId(Auth::id());
 
@@ -62,7 +62,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function createSchedulingFromClient(array $schedulingData, $userId): Scheduling
+    public function createSchedulingFromLoggedClient(array $schedulingData, $userId): Scheduling
     {
         $client = Client::where('user_id', $userId)->first();
 
@@ -99,7 +99,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function updateSchedulingFromClient(array $schedulingData, $userId, $schedulingId): Scheduling
+    public function updateSchedulingFromLoggedClient(array $schedulingData, $userId, $schedulingId): Scheduling
     {
         $client = Client::with('user')->where('user_id', $userId)->first();
 
@@ -139,7 +139,7 @@ class SchedulingService
         return $scheduling;
     }
 
-    public function deleteSchedulingFromClient($userId, $schedulingId): void
+    public function deleteSchedulingFromLoggedClient($userId, $schedulingId): void
     {
         $client = Client::with('user')->where('user_id', $userId)->first();
 

@@ -23,7 +23,7 @@ class SchedulingController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->query('per_page', 10);
-        return ApiResponse::success($this->schedulingService->getAllSchedulingsFromClient($perPage), 'Schedulings retrieved successfully');
+        return ApiResponse::success($this->schedulingService->getAllSchedulingsFromLoggedClient($perPage), 'Schedulings retrieved successfully');
     }
 
     public function getAvailableSlots(GetAvailabeSlotRequest $request)
@@ -35,27 +35,27 @@ class SchedulingController extends Controller
 
     public function show(string $id)
     {
-        $scheduling = $this->schedulingService->getSchedulingFromClient($id);
+        $scheduling = $this->schedulingService->getSchedulingFromLoggedClient($id);
         return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling retrieved successfully');
     }
 
     public function store(StoreSchedulingRequest $request)
     {
-        $scheduling = $this->schedulingService->createSchedulingFromClient($request->validated(), Auth::id());
+        $scheduling = $this->schedulingService->getSchedulingFromLoggedClient($request->validated(), Auth::id());
 
         return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling created successfully', 201);
     }
 
     public function update(UpdateSchedulingRequest $request, string $schedulingId)
     {
-        $scheduling = $this->schedulingService->updateSchedulingFromClient($request->validated(), Auth::id(), $schedulingId);
+        $scheduling = $this->schedulingService->updateSchedulingFromLoggedClient($request->validated(), Auth::id(), $schedulingId);
 
         return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling updated successfully');
     }
 
     public function destroy($schedulingId)
     {
-        $this->schedulingService->deleteSchedulingFromClient(Auth::id(), $schedulingId);
+        $this->schedulingService->deleteSchedulingFromLoggedClient(Auth::id(), $schedulingId);
 
         return response()->json(null, 204);
     }

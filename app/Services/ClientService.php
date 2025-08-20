@@ -86,7 +86,7 @@ class ClientService
         return $client;
     }
 
-    public function updateClientByUserId(array $clientData, $userId): Client
+    public function updateLoggedClient(array $clientData, $userId): Client
     {
         $client = $this->getClientByUserId($userId);
 
@@ -107,7 +107,7 @@ class ClientService
         return $client->delete();
     }
 
-    public function deleteClientByUserId($userId): bool
+    public function deleteLoggedClient($userId): bool
     {
         $client = $this->getClientByUserId($userId);
 

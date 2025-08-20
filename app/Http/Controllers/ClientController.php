@@ -33,14 +33,14 @@ class ClientController extends Controller
 
     public function update(UpdateClientRequest $request)
     {
-        $client = $this->clientService->updateClientByUserId($request->validated(), Auth::id());
+        $client = $this->clientService->updateLoggedClient($request->validated(), Auth::id());
 
         return ApiResponse::success(new ClientResource($client), 'Client updated successfully');
     }
 
     public function destroy()
     {
-        $this->clientService->deleteClientByUserId(Auth::id());
+        $this->clientService->deleteLoggedClient(Auth::id());
 
         return response()->json(null, 204);
     }
