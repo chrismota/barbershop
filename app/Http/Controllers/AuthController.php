@@ -27,7 +27,7 @@ class AuthController extends Controller
             'client' => ['client']
         };
 
-        $token = $user->createToken('token', $abilities, now()->addHour())->plainTextToken;
+        $token = $user->createToken('token', $abilities, now()->addHours(12))->plainTextToken;
 
         return ApiResponse::success([
             'token' => $token,
