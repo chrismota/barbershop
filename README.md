@@ -1,61 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 💈 Barbershop API - Laravel 12  
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+API de gerenciamento de barbearia desenvolvida em **Laravel 12**, com autenticação via **Sanctum**, sistema de **agendamento de horários**, **envio de e-mails automáticos para administradores**, **filas de processamento**, documentação com **Apidog** e banco de dados **MySQL**.  
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tecnologias Utilizadas  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- ⚡ [Laravel 12](https://laravel.com)  
+- 🛢️ [MySQL](https://www.mysql.com/)  
+- 🔑 [Laravel Sanctum](https://laravel.com/docs/12.x/sanctum)  
+- 📩 [Mail (SMTP)](https://laravel.com/docs/12.x/mail)  
+- 📨 [Queues](https://laravel.com/docs/12.x/queues)  
+- 📖 [Apidog](https://apidog.com/) - documentação da API  
+- 🧪 [Insomnia](https://insomnia.rest/) - testes da API  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📦 Instalação do Projeto  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1️⃣ Clonar o repositório  
+```bash
+git clone https://github.com/seuusuario/barbershop.git
+cd barbershop
+```
+### 2️⃣ Instalar dependências
+```bash
+composer install
+npm install && npm run build
+```
+### 3️⃣ Configurar variáveis de ambiente
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Crie o arquivo .env baseado no .env.example:
+```bash
+cp .env.example .env
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 4️⃣ Gerar chave da aplicação
 
-## Laravel Sponsors
+```
+php artisan key:generate
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 5️⃣ Configurar banco de dados
 
-### Premium Partners
+Edite o arquivo `.env` com as credenciais do seu MySQL:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```
+DB_CONNECTION=mysql
+DB_HOST=seuhost
+DB_PORT=suaporta
+DB_DATABASE=barbershop
+DB_USERNAME=seuusername
+DB_PASSWORD=suasenha
+```
+Crie o banco de dados no MySQL:
 
-## Contributing
+```
+CREATE DATABASE barbershop;
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Rodar migrations e seeders:
+```bash
+php artisan migrate --seed
+```
 
-## Code of Conduct
+### 6️⃣ Configurar serviço de e-mail
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Edite o arquivo `.env` com as credenciais de e-mail:
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=seuemail@gmail.com
+MAIL_PASSWORD=sua_senha_de_app
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=seuemail@gmail.com
+MAIL_FROM_NAME="Barbershop"
+```
+⚠️ Para Gmail, é necessário ativar 2FA e gerar uma senha de aplicativo neste [link](https://myaccount.google.com/apppasswords).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 7️⃣ Rodar filas
 
-## License
+Para envio de e-mails assíncronos, rode o worker de filas:
+```bash
+php artisan queue:work
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 8️⃣ Iniciar servidor local
+```bash
+php artisan serve
+```
+
+API disponível em:
+👉 http://127.0.0.1:8000
+
+## 📖 Documentação da API (Apidog)
+
+A documentação está disponível via Apidog.
+
+**Como visualizar:**
+
+Abra o Apidog.
+
+Importe o arquivo de especificação da API (`barbershop.swagger.json`) presente na raiz do projeto.
+
+Todas as rotas estarão disponíveis com exemplos de requisição.
+
+## ✅ Funcionalidades Implementadas
+
+- 🔑 Autenticação com Sanctum
+
+- 👤 Cadastro e login de clientes e administradores
+
+- 📅 Listagem de horários livres para agendamento
+
+- ✍️ Agendamento de horários pelo cliente (e opcionalmente pelo admin)
+
+- 📋 Listagem de agendamentos do cliente
+
+- 📧 Envio de e-mail automático para admins na criação/edição de agendamentos
+
+- 📨 Processamento de e-mails via queues
+
+- 🗃️ Migrations e seeders para popular o banco
+
+## 🛠️ Rotas Backend com Insomnia
+O projeto inclui um arquivo de exportação do Insomnia (`barbershop.yaml`) com todas as rotas organizadas.
+
+**Como usar:**
+1. Abra o Insomnia.
+2. Importe o arquivo `barbershop.yaml` (na raiz do projeto).
+3. Todas as rotas estarão disponíveis, incluindo:
+
+### 🧑‍💼 Rotas de Administrador:
+- CRUD de usuários administradores
+- Alteração e remoção de dados de clientes
+- Listagem de clientes, administradores e agendamentos
+- CRUD de agendamentos (opcional)
+
+
+### 🙋‍♂️ Rotas de Cliente:
+- Listagem de horários disponíveis para agendamento
+- CRUD do próprio perfil
+- CRUD de seus agendamentos
+- Listagem de todos seus agendamentos
+
+
+## 👨‍💻 Autor
+Christian Mota
+
+[GitHub](https://github.com/chrismota)
