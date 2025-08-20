@@ -11,7 +11,13 @@ class UserService
 {
     public function getAllUsers($perPage = 10): LengthAwarePaginator
     {
-        return User::paginate($perPage);
+        $userType = UserType::where('role', 'admin')->first();
+
+        if (!$userType) {
+            throw new NotFoundHttpException("User type admin not found.");
+        }
+
+        return User::where('user_type_id', $userType->id)->paginate($perPage);
     }
 
     public function getUser($userId): User
