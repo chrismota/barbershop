@@ -41,7 +41,7 @@ class SchedulingController extends Controller
 
     public function store(StoreSchedulingRequest $request)
     {
-        $scheduling = $this->schedulingService->getSchedulingFromLoggedClient($request->validated(), Auth::id());
+        $scheduling = $this->schedulingService->createSchedulingFromLoggedClient($request->validated(), Auth::id());
 
         return ApiResponse::success(new SchedulingResource($scheduling), 'Scheduling created successfully', 201);
     }
