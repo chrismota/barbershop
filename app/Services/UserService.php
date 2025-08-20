@@ -19,7 +19,7 @@ class UserService
         $user = User::find($userId);
 
         if (!$user) {
-            throw new NotFoundHttpException("Usuário não encontrado.");
+            throw new NotFoundHttpException("User not found.");
         }
 
         return $user;
@@ -46,7 +46,7 @@ class UserService
         $user = User::find($userId);
 
         if (!$user) {
-            throw new NotFoundHttpException("Usuário não encontrado.");
+            throw new NotFoundHttpException("User not found.");
         }
 
         $user->update($userData);
@@ -59,7 +59,7 @@ class UserService
         $user = User::find($userId);
 
         if (!$user) {
-            throw new NotFoundHttpException("Usuário não encontrado.");
+            throw new NotFoundHttpException("User not found.");
         }
 
         return $user->delete();

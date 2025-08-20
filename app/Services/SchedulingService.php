@@ -20,7 +20,7 @@ class SchedulingService
          $client = Client::where('user_id', Auth::id())->first();
 
          if(!$client){
-            throw new NotFoundHttpException("Usuário não encontrado.");
+            throw new NotFoundHttpException("Client not found");
          }
 
          return Scheduling::where('client_id', $client->id)->orderBy('start_date', 'asc')->paginate($perPage);
@@ -60,7 +60,7 @@ class SchedulingService
         $client = Client::where('user_id', $userId)->first();
 
         if(!$client){
-            throw new NotFoundHttpException("Usuário não encontrado.");
+            throw new NotFoundHttpException("Client not found.");
         }
 
         $this->validateSchedule($schedulingData);
@@ -81,7 +81,7 @@ class SchedulingService
         $client = Client::find($clientId);
 
         if(!$client){
-            throw new NotFoundHttpException("Cliente não encontrado.");
+            throw new NotFoundHttpException("Client not found.");
         }
 
         $this->validateSchedule($schedulingData);
@@ -104,7 +104,7 @@ class SchedulingService
         $scheduling = Scheduling::where('client_id', $client->id)->find($schedulingId);
 
         if(!$scheduling){
-            throw new NotFoundHttpException("Agendamento não encontrado.");
+            throw new NotFoundHttpException("Scheduling not found.");
         }
 
         $oldScheduling = $scheduling->only(['start_date', 'end_date']);
@@ -123,7 +123,7 @@ class SchedulingService
         $scheduling = Scheduling::with('client.user')->find($schedulingId);
 
         if (!$scheduling) {
-            throw new NotFoundHttpException("Agendamento não encontrado.");
+            throw new NotFoundHttpException("Scheduling not found.");
         }
 
         $client = $scheduling->client;
@@ -146,7 +146,7 @@ class SchedulingService
         $scheduling = Scheduling::where('client_id', $client->id)->where('id', $schedulingId)->first();
 
         if(!$scheduling){
-           throw new NotFoundHttpException("Scheduling not found for this client");
+           throw new NotFoundHttpException("Scheduling not found.");
         }
 
         $scheduling->delete();
@@ -157,7 +157,7 @@ class SchedulingService
         $scheduling = Scheduling::find($schedulingId);
 
         if(!$scheduling){
-           throw new NotFoundHttpException("Scheduling not found for this client");
+           throw new NotFoundHttpException("Scheduling not found.");
         }
 
         $scheduling->delete();
@@ -206,7 +206,7 @@ class SchedulingService
 
         if ($start->lt($dayStart) || $end->gt($dayEnd)) {
             throw ValidationException::withMessages([
-                'schedule' => ['Agendamento deve estar dentro do expediente (09:00 - 18:00)']
+                'schedule' => ['Appointments must be made during business hours (09:00 - 18:00)']
             ]);
         }
 
@@ -221,7 +221,7 @@ class SchedulingService
         $conflict = $conflictQuery->exists();
 
         if ($conflict) {
-            throw ValidationException::withMessages(['message' => "Já existe um agendamento neste horário"]);
+            throw ValidationException::withMessages(['message' => "There is already an appointment at this time"]);
         }
     }
 
