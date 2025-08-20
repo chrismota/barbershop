@@ -19,7 +19,7 @@ class SchedulingService
     {
         $client = $this->getClientByUserId(Auth::id());
 
-         return Scheduling::where('client_id', $client->id)->orderBy('start_date', 'asc')->paginate($perPage);
+        return Scheduling::where('client_id', $client->id)->orderBy('start_date', 'asc')->paginate($perPage);
     }
 
     public function getAllSchedulingsWithAdmin($perPage = 10): LengthAwarePaginator
@@ -232,13 +232,13 @@ class SchedulingService
 
     private function sendSchedulingEmail(Scheduling $scheduling, Client $client): void
     {
-        $admins = User::whereHas('userType', fn($q) => $q->where('role', 'Admin'))->get();
+        $admins = User::whereHas('userType', fn($q) => $q->where('role', 'admin'))->get();
         SendSchedulingEmail::dispatch($scheduling, $client, $admins);
     }
 
     private function sendSchedulingUpdatedEmail(array $oldScheduling, array $newScheduling, Client $client)
     {
-        $admins = User::whereHas('userType', fn($q) => $q->where('role', 'Admin'))->get();
+        $admins = User::whereHas('userType', fn($q) => $q->where('role', 'admin'))->get();
         SendSchedulingEmailUpdated::dispatch($oldScheduling, $newScheduling, $client->toArray(), $admins);
     }
 }
