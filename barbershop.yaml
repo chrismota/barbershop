@@ -1,0 +1,1129 @@
+type: collection.insomnia.rest/5.0
+name: Barbershop
+meta:
+  id: wrk_5b57336cea404e11a764fed4902eebed
+  created: 1755300419002
+  modified: 1755300419002
+  description: ""
+collection:
+  - name: Logged
+    meta:
+      id: fld_8258b22894c14c0aa89e748852349f36
+      created: 1755629683420
+      modified: 1755629716724
+      sortKey: -1755629683420
+      description: ""
+    children:
+      - name: Admin Only Routes
+        meta:
+          id: fld_958bb653b39c423cbf46db0c470cb9d7
+          created: 1755300452474
+          modified: 1755629745252
+          sortKey: -1755629726651
+          description: ""
+        children:
+          - name: CRUD
+            meta:
+              id: fld_f0ef28486f3e420fa9c7041462557a83
+              created: 1755626588014
+              modified: 1755626593912
+              sortKey: -1755626588014
+              description: ""
+            children:
+              - url: http://barbershop.test/api/admins
+                name: Get All Admins
+                meta:
+                  id: req_7bfbfd1d2f1340bbb345ae8285fc3051
+                  created: 1755309445768
+                  modified: 1755626719754
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607558
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_e3614b6f6c714045bfb49d1945f1e9aa
+                  - id: pair_9baf7238b2434e19a3ad9d199468653e
+                    name: Content-Type
+                    value: application/json
+                    description: ""
+                    disabled: false
+                  - id: pair_9b1cb5ccadff4eb69d8faf02fa976e50
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admins/1b8feff7-8aef-46c9-859a-ec4abbe5ae03
+                name: Update Admin
+                meta:
+                  id: req_0d3e572bca9a40e4a5e8086cb37f7783
+                  created: 1755309456726
+                  modified: 1755723220203
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607058
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                      "name": "Admin Teste",
+                      "email": "teste@example.com",
+                      "password": "312321323213"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_4d408d020bcd4db694d94766bccc3fe2
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_837e140df04745fc9d633547c22f6fc9
+                  - id: pair_276ff293e0bb41b78e25d42776e5bd54
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admins/083be725-0b3a-420b-93e0-e3e11dd31a61
+                name: Delete Admin
+                meta:
+                  id: req_256360b8c7104458acfc7571ecf0ac59
+                  created: 1755309460846
+                  modified: 1755717708336
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626606758
+                method: DELETE
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_177bb1eaee9a4032b87c965f6260f6b4
+                  - id: pair_f878f77827424d7b83eab91bb12d1dc1
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admins
+                name: Create Admin
+                meta:
+                  id: req_4e46d07f809c4820a347538485dd78d1
+                  created: 1755355291167
+                  modified: 1755723115285
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607158
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                      "name": "Novo Admin",
+                      "email": "novoadmin@example.com",
+                      "password": "123456"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_69ad608b79dd43c484291fb583dc7b40
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_4ee2644bb1c7484fbb3a900716888628
+                  - id: pair_7b5973ed924d48ebae391cca180c5197
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admin/1b8feff7-8aef-46c9-859a-ec4abbe5ae03
+                name: Get Admin
+                meta:
+                  id: req_b9a69a0ff994401fb1a60444ce758514
+                  created: 1755376493847
+                  modified: 1755717639338
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607258
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_e3614b6f6c714045bfb49d1945f1e9aa
+                  - id: pair_9baf7238b2434e19a3ad9d199468653e
+                    name: Content-Type
+                    value: application/json
+                    description: ""
+                    disabled: false
+                  - id: pair_c78e6de8e3e14d55b742f8f1716376e5
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admin
+                name: Get Logged Admin
+                meta:
+                  id: req_de78acaee4284552b6f0ec763d8e0e17
+                  created: 1755613133899
+                  modified: 1755626633545
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607458
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_e3614b6f6c714045bfb49d1945f1e9aa
+                  - id: pair_9baf7238b2434e19a3ad9d199468653e
+                    name: Content-Type
+                    value: application/json
+                    description: ""
+                    disabled: false
+                  - id: pair_c78e6de8e3e14d55b742f8f1716376e5
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admins
+                name: Update Logged Admin
+                meta:
+                  id: req_19e0395ce9d3480a88416f8a999ccba5
+                  created: 1755613602325
+                  modified: 1755723035243
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607358
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                      "name": "Admin Editado",
+                      "email": "admineditado@example.com",
+                      "password": "123456"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_4d408d020bcd4db694d94766bccc3fe2
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_837e140df04745fc9d633547c22f6fc9
+                  - id: pair_276ff293e0bb41b78e25d42776e5bd54
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admins
+                name: Delete Logged Admin
+                meta:
+                  id: req_e39ba89030ff4726839b6e6526d35c53
+                  created: 1755614621063
+                  modified: 1755703968561
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626607308
+                method: DELETE
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_177bb1eaee9a4032b87c965f6260f6b4
+                  - id: pair_f878f77827424d7b83eab91bb12d1dc1
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+          - name: Client
+            meta:
+              id: fld_67b3b20849384f5287343ed2363f58c8
+              created: 1755626748668
+              modified: 1755626748668
+              sortKey: -1755626748668
+              description: ""
+            children:
+              - url: http://barbershop.test/api/clients/17ddf185-194f-4d4e-bc9a-1c3d2e5d5664
+                name: Update Client
+                meta:
+                  id: req_56d447974dc9442f8b7bdea3f251667a
+                  created: 1755300900944
+                  modified: 1755723702827
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629869878
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                    	"name": "Chris Mota",
+                    	"email": "chris@gmail.com",
+                    	"password": "christian",
+                    	"phone": "14124214214",
+                    	"address": "Rua do christian 01",
+                    	"city": "{% faker 'randomCity' %}"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_b97e7726758d43419a57ef5c84426045
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_a06ae1a5b69341129e726bc2d6215eab
+                  - id: pair_c145d52a39234624b3e73ab877e5cd5c
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/clients/172a7102-2d90-4ff9-b694-04b51ff98af7
+                name: Delete Client
+                meta:
+                  id: req_3345086be21e475eb78e711e6433ddb5
+                  created: 1755300932188
+                  modified: 1755717562685
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629869778
+                method: DELETE
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_8e750e07a9c9421f923a6550847ec80b
+                  - id: pair_2cbe717bbeca43bab3707e1e4ecec188
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/clients
+                name: Get All Clients
+                meta:
+                  id: req_40feb7ea85cc493cba1dbcf6b87b195f
+                  created: 1755300953971
+                  modified: 1755645099674
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629870078
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_53031731c5024ea8b320d86535910876
+                  - id: pair_e1b8ff96991d4916b37c3215a6e8c75f
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/client/17ddf185-194f-4d4e-bc9a-1c3d2e5d5664
+                name: Get Client
+                meta:
+                  id: req_ccd8aa34d6204b3d90040dba521ddad7
+                  created: 1755379740656
+                  modified: 1755723566893
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629869978
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_6daa20126a2d4f309da235b30def22eb
+                  - id: pair_888d48246cc34d25a5fc988a298fbcb8
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+          - name: Schedule
+            meta:
+              id: fld_8aa310f68f9f4827af823a8caf750112
+              created: 1755629909957
+              modified: 1755629917263
+              sortKey: -1755626748768
+              description: ""
+            children:
+              - url: http://barbershop.test/api/admin-only/schedulings
+                name: Get Full Schedule
+                meta:
+                  id: req_fc145b86c10546d0b6c5545d3ec68324
+                  created: 1755300565380
+                  modified: 1755709615445
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629928077
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admin-only/schedulings/59888d7c-c26b-4648-a5a0-e97657974560
+                name: Get Schedule
+                meta:
+                  id: req_1766eeea4cda447ca5580b222e79e7a9
+                  created: 1755628990676
+                  modified: 1755717145396
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629927977
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admin-only/schedulings/172a7102-2d90-4ff9-b694-04b51ff98af7
+                name: Create Schedule
+                meta:
+                  id: req_b80bac0d09b04c88a3981bd7844694d6
+                  created: 1755629007817
+                  modified: 1755723352748
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629927877
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                    	"start_date": "2025-08-25T14:30:00.000000Z",
+                    	"end_date": "2025-08-25T15:30:00.000000Z"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admin-only/schedulings/b8a00a82-1b5d-45f9-aed5-d4a8ee476ce8
+                name: Update Schedule
+                meta:
+                  id: req_1ad31e5bf7304cdd8ed7a94e77399023
+                  created: 1755629028536
+                  modified: 1755722887681
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629927777
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                    	"start_date": "2025-08-23T15:30:00.000000Z",
+                    	"end_date": "2025-08-23T18:0:00.000000Z"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/admin-only/schedulings/b8a00a82-1b5d-45f9-aed5-d4a8ee476ce8
+                name: Delete Schedule
+                meta:
+                  id: req_2e4462d12eba4eb1b06f9ec8ef571d17
+                  created: 1755629035912
+                  modified: 1755717281150
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755629927677
+                method: DELETE
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+      - name: Client Only Routes
+        meta:
+          id: fld_696b853a4438453795d00a7fd54809e2
+          created: 1755300462106
+          modified: 1755629749299
+          sortKey: -1755629726751
+          description: ""
+        children:
+          - name: Schedule
+            meta:
+              id: fld_e98dca92b71345209fabde20e4221264
+              created: 1755626245097
+              modified: 1755626245097
+              sortKey: -1755626245097
+              description: ""
+            children:
+              - url: http://barbershop.test/api/schedulings
+                name: Create Schedule
+                meta:
+                  id: req_7003897ad15c4eca85b709924c1b9b97
+                  created: 1755300525779
+                  modified: 1755722615531
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626261122
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                    	"start_date": "2025-08-24T09:30:00.000000Z",
+                    	"end_date": "2025-08-24T:30:00.000000Z"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_9a7213d9c2a74227bff8dbbe14386e4c
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_aaf96618f6c74801aef3cfe4fcccfccc
+                  - id: pair_6cd2e9eb24be4cb591406bf6f2a5fa52
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/schedulings/49c529be-dd29-424f-98c4-94b8a2338891
+                name: Delete Schedule
+                meta:
+                  id: req_3a0e18f7f7f04a8099835a876413ab49
+                  created: 1755393540190
+                  modified: 1755717058651
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626261047
+                method: DELETE
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_aaf96618f6c74801aef3cfe4fcccfccc
+                  - id: pair_6cd2e9eb24be4cb591406bf6f2a5fa52
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/schedulings/59888d7c-c26b-4648-a5a0-e97657974560
+                name: Update Schedule
+                meta:
+                  id: req_9fecf7b3dc554ebd9ee941adc23a88fb
+                  created: 1755538025000
+                  modified: 1755722672486
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626261097
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                    	"start_date": "2025-08-24T11:30:00",
+                    	"end_date": "2025-08-24T14:30:00"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_9a7213d9c2a74227bff8dbbe14386e4c
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_aaf96618f6c74801aef3cfe4fcccfccc
+                  - id: pair_6cd2e9eb24be4cb591406bf6f2a5fa52
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/schedulings/ecfa195b-e32c-4eb1-8f69-f8eb16089e98
+                name: Get Schedule From Client
+                meta:
+                  id: req_295b2cdf10da400b9415f4c5043e11a8
+                  created: 1755557912231
+                  modified: 1755708351032
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626261140.75
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/schedulings
+                name: Get All Schedules From Client
+                meta:
+                  id: req_5b2b82e6041746d8b80dde476344d87a
+                  created: 1755623568595
+                  modified: 1755700066304
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626261147
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_27cab500287f49fcac6c8565f3b93dd8
+                  - id: pair_3b53039f4ed2446aa0b132d445a96743
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+          - name: CRUD
+            meta:
+              id: fld_c6647654e8fc46d384d0d61ddea716b8
+              created: 1755626370733
+              modified: 1755626370733
+              sortKey: -1755626370733
+              description: ""
+            children:
+              - url: http://barbershop.test/api/client
+                name: Get Client
+                meta:
+                  id: req_f1baccfe0cf44a82be23adad293112ea
+                  created: 1755615541900
+                  modified: 1755714536463
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626383575
+                method: GET
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_6daa20126a2d4f309da235b30def22eb
+                  - id: pair_888d48246cc34d25a5fc988a298fbcb8
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                  disabled: false
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/clients
+                name: Update Client
+                meta:
+                  id: req_8b5655f690a346e291f3ea7589578973
+                  created: 1755615549638
+                  modified: 1755722537035
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626383525
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: |-
+                    {
+                    	"name": "Christian Mota",
+                    	"email": "christianmota@gmail.com",
+                    	"password": "christianmota",
+                    	"phone": "0123456789",
+                    	"address": "Rua das Palmeiras",
+                    	"city": "{% faker 'randomCity' %}"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                    id: pair_b97e7726758d43419a57ef5c84426045
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_a06ae1a5b69341129e726bc2d6215eab
+                  - id: pair_c145d52a39234624b3e73ab877e5cd5c
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: http://barbershop.test/api/clients
+                name: Delete Client
+                meta:
+                  id: req_15b69701b10744918fdd8b1fa0f3a9b0
+                  created: 1755615554241
+                  modified: 1755699636730
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1755626383475
+                method: DELETE
+                headers:
+                  - name: User-Agent
+                    value: insomnia/11.2.0
+                    id: pair_8e750e07a9c9421f923a6550847ec80b
+                  - id: pair_2cbe717bbeca43bab3707e1e4ecec188
+                    name: Accept
+                    value: application/json
+                    description: ""
+                    disabled: false
+                authentication:
+                  type: bearer
+                  token: "{{ _.token }}"
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+      - url: http://barbershop.test/api/scheduling/available-slots?date=2025-08-24
+        name: Get Available Schedule
+        meta:
+          id: req_37eeb02030ae4d018eb738ca09f80a12
+          created: 1755485561286
+          modified: 1755664827651
+          isPrivate: false
+          description: ""
+          sortKey: -1755629726951
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_27cab500287f49fcac6c8565f3b93dd8
+          - id: pair_3b53039f4ed2446aa0b132d445a96743
+            name: Accept
+            value: application/json
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://barbershop.test/api/logout
+        name: Logout
+        meta:
+          id: req_6446499592e74941b51a35bcb87294ee
+          created: 1755571505782
+          modified: 1755641418531
+          isPrivate: false
+          description: ""
+          sortKey: -1755629726851
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_bb7b3b83088b4452aa122cbdefe1cbf8
+          - id: pair_027aaeaf9b2542d6977aaf7bb01db1e0
+            name: Accept
+            value: application/json
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Not Logged
+    meta:
+      id: fld_ad2d593e9dd44ba1badf12b6f70486cd
+      created: 1755715224697
+      modified: 1755715224697
+      sortKey: -1755715224697
+      description: ""
+    children:
+      - url: http://barbershop.test/api/clients
+        name: Create Client
+        meta:
+          id: req_e59d195d564042489283187f8e96b153
+          created: 1755300851886
+          modified: 1755722056821
+          isPrivate: false
+          description: ""
+          sortKey: -1755715236596
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Christian Cliente",
+            	"email": "christian@example.com",
+            	"password": "christian",
+            	"phone": "0123456789",
+            	"address": "Rua das Palmeiras",
+            	"city": "{% faker 'randomCity' %}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_7fc7e600c8a34afcb2ce36d85d8241b8
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_47d047259c5b4b4b9a35a9244c329b58
+          - id: pair_46f1568f18f841c494d22f416d435216
+            name: Accept
+            value: application/json
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://barbershop.test/api/login
+        name: Login
+        meta:
+          id: req_b87db6b47fcb4fa3be2cae5f5bdff51e
+          created: 1755570087833
+          modified: 1755722696735
+          isPrivate: false
+          description: ""
+          sortKey: -1755715236496
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "admin@example.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_34eda632080a4217a5f33cde5c23a3ca
+          - name: User-Agent
+            value: insomnia/11.2.0
+            id: pair_bb7b3b83088b4452aa122cbdefe1cbf8
+          - id: pair_027aaeaf9b2542d6977aaf7bb01db1e0
+            name: Accept
+            value: application/json
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_817348055fb367f73430f4c9b97a7de2d54fdfa0
+    created: 1755300419033
+    modified: 1755383726092
+  cookies:
+    - key: XSRF-TOKEN
+      value: eyJpdiI6IkhWdWtneHBoWWJSbXZEdHdlSnhDbEE9PSIsInZhbHVlIjoiVS9GR1U1WGZiS0JuS2FQVlJKSzRVV1RtM0JNKzAwbHd5c3lTc2NoYVJKT2ZROC9IQ1FWakcwcW5UTVpTK0FKMzBQTVhJYkJJSGExeUdISE9Jb0NmdUJWNnZaejUyc21nd0FxRUlJTVdjQVc5djZQR0dqU050R2laMlFWME9VUkYiLCJtYWMiOiI5NTc5OTgzZThiOGQ1NWI5ZDRmMjUzNGYxMmQ0YzRkOTdlZTI1ZDA0YTQ5YmIzYmI5ZjYzMTc1MmVjMjcyYWNiIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: barbershop.test
+      path: /
+      hostOnly: true
+      creation: 2025-08-16T14:18:04.555Z
+      lastAccessed: 2025-08-16T22:35:26.090Z
+      sameSite: lax
+      id: 07ec076a-45c4-4e15-85c2-30e0192f2ed7
+    - key: laravel-session
+      value: eyJpdiI6IlZZOWdNNzFZWERFbmFLTWRvQUk4a3c9PSIsInZhbHVlIjoiVGV6VjNoSnZqMmlJUG9vT1RmZjc5MWxSRGZOTVZlanhnenU3OVJBOEx6SHgvSERaRmRBSHhUZERReUcyLzk5OU8zUHg1UUlVREJKZm45SFBROHhzelVxWFFjVkRxdVE1MDdmRUJYK0VuMUI5bkdPMkVSbUlUb21rWjE0RVBPb2EiLCJtYWMiOiIyMmE2YzYwMzQwMzZhMTA3OTFlOWFmYmI4NGY0MmQ1Y2Y3ZWY4YTUzYzBhNGI3OTNlYTg0YTRlNTAyYzcwZGU3IiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: barbershop.test
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-08-16T14:18:04.559Z
+      lastAccessed: 2025-08-16T22:35:26.091Z
+      sameSite: lax
+      id: 4be3e29d-6421-4cc2-90cd-09efb11588c1
+environments:
+  name: Base Environment
+  meta:
+    id: env_817348055fb367f73430f4c9b97a7de2d54fdfa0
+    created: 1755300419009
+    modified: 1755722705742
+    isPrivate: false
+  data:
+    token: 3|4tmahEpZEBvghAQsJe3gVAIWSC415UKhHhrLXbRsba76ef33
