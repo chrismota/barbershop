@@ -20,7 +20,7 @@ API de gerenciamento de barbearia desenvolvida em **Laravel 12**, com autentica�
 
 Antes de rodar este projeto, você precisa ter instalado na sua máquina:
 
-- [PHP >= 8.1](https://www.php.net/downloads.php)  
+- [PHP >= 8.4](https://www.php.net/downloads.php)  
   ⚠️ Extensões necessárias (habilite no `php.ini` se não estiverem ativas):
   ```
   extension=pdo_mysql
@@ -35,9 +35,9 @@ Antes de rodar este projeto, você precisa ter instalado na sua máquina:
 - [Composer](https://getcomposer.org/download/)
  (gerenciador de dependências PHP)
 
-[MySQL >= 5.7](https://dev.mysql.com/downloads/)
+- [MySQL >= 5.7](https://dev.mysql.com/downloads/)
 
-💡 Se estiver usando Laragon, o MySQL já está configurado.
+  💡 Se estiver usando Laragon, o MySQL já está configurado.
 
 ## 📦 Instalação do Projeto  
 
