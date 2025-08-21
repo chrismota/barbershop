@@ -16,6 +16,29 @@ API de gerenciamento de barbearia desenvolvida em **Laravel 12**, com autentica�
 
 ---
 
+## ⚙️ Pré-requisitos
+
+Antes de rodar este projeto, você precisa ter instalado na sua máquina:
+
+- [PHP >= 8.1](https://www.php.net/downloads.php)  
+  ⚠️ Extensões necessárias (habilite no `php.ini` se não estiverem ativas):
+  ```
+  extension=pdo_mysql
+  extension=openssl
+  extension=mbstring
+  extension=tokenizer
+  extension=curl
+  extension=gd
+  extension=intl
+  extension=zip
+  extension=fileinfo
+- [Composer](https://getcomposer.org/download/)
+ (gerenciador de dependências PHP)
+
+[MySQL >= 5.7](https://dev.mysql.com/downloads/)
+
+💡 Se estiver usando Laragon, o MySQL já está configurado.
+
 ## 📦 Instalação do Projeto  
 
 ### 1️⃣ Clonar o repositório  
@@ -23,10 +46,10 @@ API de gerenciamento de barbearia desenvolvida em **Laravel 12**, com autentica�
 git clone https://github.com/seuusuario/barbershop.git
 cd barbershop
 ```
+
 ### 2️⃣ Instalar dependências
 ```bash
 composer install
-npm install && npm run build
 ```
 ### 3️⃣ Configurar variáveis de ambiente
 
