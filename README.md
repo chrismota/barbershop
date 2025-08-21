@@ -43,7 +43,7 @@ Antes de rodar este projeto, você precisa ter instalado na sua máquina:
 
 ### 1️⃣ Clonar o repositório  
 ```bash
-git clone https://github.com/seuusuario/barbershop.git
+git clone https://github.com/chrismota/barbershop.git
 cd barbershop
 ```
 
